@@ -1,0 +1,62 @@
+{
+    "name": "default",
+    "n_gpu": 1,
+    "module": "full",
+    "data_loader": {
+        "type": "TrainDataLoader",
+        "args": {
+            "data_dir": "data/train",
+            "batch_size": 8,
+            "shuffle": true,
+            "validation_split": 0.05,
+            "num_workers": 8
+        }
+    },
+    "model": {
+        "type": "DefaultModel",
+        "args": {
+            "C": 3
+        }
+    },
+    "loss": {
+        "type": "loss_full",
+        "args": {
+            "loss2_lambda": 1,
+            "loss3_lambda": 1
+        }
+    },
+    "metrics": [
+        "psnr",
+        "ssim"
+    ],
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 0.0005,
+            "betas": [
+                0.5,
+                0.999
+            ],
+            "weight_decay": 0,
+            "amsgrad": true
+        }
+    },
+    "lr_scheduler": {
+        "type": "MultiplicativeLR",
+        "args": {
+            "lr_lambda_tag": "full"
+        }
+    },
+    "trainer": {
+        "type": "DefaultTrainer",
+        "args": {
+            "epochs": 300,
+            "save_dir": "saved_full",
+            "save_period": 10,
+            "verbosity": 2,
+            "monitor": "max PSNR",
+            "tensorboardX": true,
+            "log_dir": "saved_full/runs"
+        }
+    }
+}

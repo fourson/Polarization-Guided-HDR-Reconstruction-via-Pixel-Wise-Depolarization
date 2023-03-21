@@ -1,0 +1,65 @@
+{
+    "name": "default",
+    "n_gpu": 1,
+    "module": "subnetwork2",
+    "data_loader": {
+        "type": "TrainDataLoader",
+        "args": {
+            "data_dir": "data/train",
+            "batch_size": 8,
+            "shuffle": true,
+            "validation_split": 0.05,
+            "num_workers": 8
+        }
+    },
+    "model": {
+        "type": "DefaultModel",
+        "args": {
+            "C": 3
+        }
+    },
+    "loss": {
+        "type": "l1_and_l2_and_polarization_constrain",
+        "args": {
+            "p_l1_loss_lambda": 10,
+            "p_l2_loss_lambda": 100,
+            "theta_l1_loss_lambda": 10,
+            "theta_l2_loss_lambda": 100,
+            "polarization_constrain_loss_lambda": 1
+        }
+    },
+    "metrics": [
+        "psnr",
+        "ssim"
+    ],
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 0.005,
+            "betas": [
+                0.5,
+                0.999
+            ],
+            "weight_decay": 0,
+            "amsgrad": true
+        }
+    },
+    "lr_scheduler": {
+        "type": "MultiplicativeLR",
+        "args": {
+            "lr_lambda_tag": "subnetwork2"
+        }
+    },
+    "trainer": {
+        "type": "DefaultTrainer",
+        "args": {
+            "epochs": 400,
+            "save_dir": "saved_subnetwork2",
+            "save_period": 10,
+            "verbosity": 2,
+            "monitor": "off",
+            "tensorboardX": true,
+            "log_dir": "saved_subnetwork2/runs"
+        }
+    }
+}
