@@ -83,9 +83,11 @@ If you find this work helpful to your research, please cite:
 
 ```
 @article{zhou2023polarization,
-  title = {Polarization Guided HDR Reconstruction via Pixel-Wise Depolarization},
-  author = {Zhou, Chu and Han, Yufei and Teng, Minggui and Han, Jin and Li, Si and Xu, Chao and Shi, Boxin},
-  journal = {IEEE Transactions on Image Processing},
-  year = {2023}
+  title={Polarization Guided HDR Reconstruction via Pixel-Wise Depolarization},
+  author={Zhou, Chu and Han, Yufei and Teng, Minggui and Han, Jin and Li, Si and Xu, Chao and Shi, Boxin},
+  journal={IEEE Transactions on Image Processing},
+  volume={32},
+  pages={1774--1787},
+  year={2023}
 }
 ```
