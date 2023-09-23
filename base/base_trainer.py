@@ -8,7 +8,7 @@ import torch
 
 from utils import util
 from utils.visualization import WriterTensorboardX
-from model.layer_utils.funcs import init_weights
+from model.networks import init_weights
 
 
 class BaseTrainer:
